@@ -1,0 +1,10 @@
+{
+  "description": "Browse Andhra Pradesh government job openings, review recruitment details, and apply for public service positions through a streamlined portal for job seekers.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
