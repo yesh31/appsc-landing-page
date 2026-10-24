@@ -23,3 +23,168 @@
     outline-offset: 3px;
   }
 }
+
+.appsc-loader {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgb(30 105 78 / 48%), transparent 42%),
+    linear-gradient(145deg, #082e24, #0d513e 55%, #082e24);
+  color: white;
+  animation: appsc-loader-appear 500ms ease-out both;
+}
+
+.appsc-loader--exiting {
+  animation: appsc-loader-disappear 450ms ease-in forwards;
+  pointer-events: none;
+}
+
+.appsc-loader__glow {
+  position: absolute;
+  width: min(78vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(237 207 128 / 12%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3rem rgb(237 207 128 / 2%),
+    0 0 0 7rem rgb(237 207 128 / 2%);
+}
+
+.appsc-loader__content {
+  position: relative;
+  display: flex;
+  width: min(90vw, 25rem);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: appsc-loader-rise 800ms cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+.appsc-loader__emblem {
+  position: relative;
+  display: grid;
+  width: 10rem;
+  aspect-ratio: 1;
+  margin-bottom: 2rem;
+  place-items: center;
+}
+
+.appsc-loader__orbit {
+  position: absolute;
+  border: 1px solid rgb(238 210 139 / 35%);
+  border-radius: 50%;
+  animation: appsc-loader-orbit 9s linear infinite;
+}
+
+.appsc-loader__orbit--outer {
+  inset: 0;
+  border-right-color: #efd28b;
+  border-bottom-color: transparent;
+}
+
+.appsc-loader__orbit--inner {
+  inset: 0.55rem;
+  border-color: rgb(255 255 255 / 13%);
+  border-left-color: #efd28b;
+  animation-direction: reverse;
+  animation-duration: 6s;
+}
+
+.appsc-loader__logo-shell {
+  display: grid;
+  width: 7.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.75rem 3rem rgb(0 0 0 / 20%), 0 0 2rem rgb(239 210 139 / 15%);
+  animation: appsc-loader-pulse 2s ease-in-out infinite;
+}
+
+.appsc-loader__logo {
+  width: 5.25rem;
+  height: 5.25rem;
+  object-fit: contain;
+}
+
+.appsc-loader__eyebrow {
+  color: #efd28b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+}
+
+.appsc-loader__title {
+  margin-top: 0.65rem;
+  font-size: clamp(1.35rem, 5vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.appsc-loader__progress {
+  width: 10rem;
+  height: 2px;
+  margin-top: 1.8rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 18%);
+}
+
+.appsc-loader__progress span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: inherit;
+  background: #efd28b;
+  animation: appsc-loader-progress 1.25s ease-in-out infinite;
+}
+
+.appsc-loader__caption {
+  margin-top: 0.85rem;
+  color: rgb(255 255 255 / 65%);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+@keyframes appsc-loader-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes appsc-loader-disappear {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes appsc-loader-rise {
+  from { opacity: 0; transform: translateY(0.8rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes appsc-loader-orbit {
+  to { transform: rotate(1turn); }
+}
+
+@keyframes appsc-loader-pulse {
+  50% { box-shadow: 0 0.75rem 3.5rem rgb(0 0 0 / 23%), 0 0 2.5rem rgb(239 210 139 / 24%); }
+}
+
+@keyframes appsc-loader-progress {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(260%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .appsc-loader,
+  .appsc-loader__content,
+  .appsc-loader__orbit,
+  .appsc-loader__logo-shell,
+  .appsc-loader__progress span {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}

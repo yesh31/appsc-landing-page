@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 type IconName = 'search' | 'user' | 'bell' | 'arrow' | 'calendar' | 'briefcase' | 'file' | 'check' | 'download' | 'help' | 'chevron'
 
@@ -128,12 +128,42 @@ export default function App() {
   const [language, setLanguage] = useState<'en' | 'te'>('en')
   const [query, setQuery] = useState('')
   const [tab, setTab] = useState<'open' | 'upcoming'>('open')
+  const [loaderVisible, setLoaderVisible] = useState(true)
+  const [loaderExiting, setLoaderExiting] = useState(false)
   const isTelugu = language === 'te'
   const t = (text: string) => isTelugu ? teluguTranslations[text] ?? text : text
   const filtered = useMemo(() => jobs.filter((job) => (isTelugu ? teluguTranslations[job.title] : job.title).toLowerCase().includes(query.toLowerCase())), [isTelugu, query])
 
+  useEffect(() => {
+    const exitTimer = window.setTimeout(() => setLoaderExiting(true), 1500)
+    const removeTimer = window.setTimeout(() => setLoaderVisible(false), 1950)
+
+    return () => {
+      window.clearTimeout(exitTimer)
+      window.clearTimeout(removeTimer)
+    }
+  }, [])
+
   return (
     <div lang={isTelugu ? 'te' : 'en'} className="min-h-screen bg-[#f6f8f7] text-[#17211d]">
+      {loaderVisible && (
+        <div className={`appsc-loader${loaderExiting ? ' appsc-loader--exiting' : ''}`} role="status" aria-label="Loading APPSC website">
+          <div className="appsc-loader__glow" aria-hidden="true" />
+          <div className="appsc-loader__content">
+            <div className="appsc-loader__emblem" aria-hidden="true">
+              <span className="appsc-loader__orbit appsc-loader__orbit--outer" />
+              <span className="appsc-loader__orbit appsc-loader__orbit--inner" />
+              <div className="appsc-loader__logo-shell">
+                <img src="/logo.svg" alt="" className="appsc-loader__logo" />
+              </div>
+            </div>
+            <p className="appsc-loader__eyebrow">ANDHRA PRADESH</p>
+            <h1 className="appsc-loader__title">Public Service Commission</h1>
+            <div className="appsc-loader__progress" aria-hidden="true"><span /></div>
+            <p className="appsc-loader__caption">Preparing your next opportunity</p>
+          </div>
+        </div>
+      )}
       <div className="flex items-center justify-between gap-4 bg-[#093e2f] px-5 py-2 text-xs text-white/80 sm:px-10">
         <span>{t('Government of Andhra Pradesh')}</span>
         <div className="flex items-center gap-3 sm:gap-5"><button className="hidden sm:block">{t('Skip to main content')}</button><button className="hidden sm:block">{t('Accessibility')}</button><div className="flex items-center gap-1 font-semibold text-white"><button aria-pressed={!isTelugu} onClick={() => setLanguage('en')} className={!isTelugu ? '' : 'text-white/60'}>{t('English')}</button><span className="text-white/50">|</span><button aria-pressed={isTelugu} onClick={() => setLanguage('te')} className={isTelugu ? '' : 'text-white/60'}>తెలుగు</button></div></div>
