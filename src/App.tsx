@@ -170,12 +170,12 @@ export default function App() {
       </div>
 
       <header className="border-b border-[#dce4e0] bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+        <div className="flex w-full items-center justify-between px-5 py-4 lg:px-8">
           <div className="flex items-center gap-3">
             <img src="/logo.svg" alt={isTelugu ? 'APPSC లోగో' : 'APPSC logo'} className="size-13" />
             <div><p className="text-lg font-bold leading-tight text-[#143f32]">{t('Andhra Pradesh Public Service Commission')}</p><p className="mt-0.5 text-xs text-[#66736e]">{t('Government of Andhra Pradesh')}</p></div>
           </div>
-          <div className="ml-auto flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <nav className="hidden items-center gap-7 text-sm font-medium text-[#3e4d47] lg:flex">
               <a className="text-[#09684d]" href="#jobs">{t('Find Jobs')}</a><a href="#notifications">{t('Notifications')}</a><a href="#results">{t('Results')}</a><a href="#resources">{t('Resources')}</a>
             </nav>
@@ -286,7 +286,7 @@ export default function App() {
       </main>
 
       <footer className="bg-[#092f25] px-5 py-8 text-sm text-white/65">
-        <div className="mx-auto flex max-w-7xl flex-row items-center justify-between gap-5 lg:px-8"><div className="min-w-0"><p className="font-semibold text-white">{t('Andhra Pradesh Public Service Commission')}</p><p className="mt-1 text-xs">{t('Vijayawada, Andhra Pradesh — 520010')}</p></div><div className="flex shrink-0 flex-wrap justify-end gap-x-5 gap-y-2"><a href="#contact">{t('Contact us')}</a><a href="#privacy">{t('Privacy')}</a><a href="#terms">{t('Terms of use')}</a><a href="#sitemap">{t('Sitemap')}</a></div></div>
+        <div className="flex w-full flex-row items-center justify-between gap-5 px-5 lg:px-8"><div className="min-w-0"><p className="font-semibold text-white">{t('Andhra Pradesh Public Service Commission')}</p><p className="mt-1 text-xs">{t('Vijayawada, Andhra Pradesh — 520010')}</p></div><div className="flex shrink-0 flex-wrap justify-end gap-x-5 gap-y-2"><a href="#contact">{t('Contact us')}</a><a href="#privacy">{t('Privacy')}</a><a href="#terms">{t('Terms of use')}</a><a href="#sitemap">{t('Sitemap')}</a></div></div>
       </footer>
     </div>
   )
