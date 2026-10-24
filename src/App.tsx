@@ -285,8 +285,19 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="bg-[#092f25] px-5 py-8 text-sm text-white/65">
-        <div className="flex w-full flex-row items-center justify-between gap-5 px-5 lg:px-8"><div className="min-w-0"><p className="font-semibold text-white">{t('Andhra Pradesh Public Service Commission')}</p><p className="mt-1 text-xs">{t('Vijayawada, Andhra Pradesh — 520010')}</p></div><div className="flex shrink-0 flex-wrap justify-end gap-x-5 gap-y-2"><a href="#contact">{t('Contact us')}</a><a href="#privacy">{t('Privacy')}</a><a href="#terms">{t('Terms of use')}</a><a href="#sitemap">{t('Sitemap')}</a></div></div>
+      <footer className="bg-[#092f25] py-8 text-sm text-white/65">
+        <div className="flex w-full flex-col items-start gap-6 px-5 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <div className="min-w-0">
+            <p className="font-semibold text-white">{t('Andhra Pradesh Public Service Commission')}</p>
+            <p className="mt-1 text-xs">{t('Vijayawada, Andhra Pradesh — 520010')}</p>
+          </div>
+          <div className="flex w-full flex-wrap justify-start gap-x-5 gap-y-3 sm:w-auto sm:justify-end">
+            <a href="#contact">{t('Contact us')}</a>
+            <a href="#privacy">{t('Privacy')}</a>
+            <a href="#terms">{t('Terms of use')}</a>
+            <a href="#sitemap">{t('Sitemap')}</a>
+          </div>
+        </div>
       </footer>
     </div>
   )
